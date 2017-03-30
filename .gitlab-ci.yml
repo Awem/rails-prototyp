@@ -1,0 +1,33 @@
+#test:
+#  script:
+#  - apt-get update -qy
+#  - apt-get install -y nodejs
+#  - bundle install --path /cache
+#  - bundle exec rake db:create RAILS_ENV=test
+#  - bundle exec rake test
+
+staging:
+  type: deploy
+  script:
+  - gem install dpl
+  - dpl --provider=heroku --app=rproto-api-staging --api-key=$HEROKU_STAGING_API_KEY
+  only:
+  - master
+
+production:
+  type: deploy
+  script:
+  - gem install dpl
+  - dpl --provider=heroku --app=rproto-api-production --api-key=$HEROKU_PRODUCTION_API_KEY
+  only:
+  - tags
+
+#runner
+#  gitlab-ci-multi-runner register \
+#    --non-interactive \
+#    --url "http://hx.server.net:6002/" \
+#    --registration-token "042762aba6e06b4d7cebc9b422a0c5" \
+#    --description "ruby-2.2" \
+#    --executor "docker" \
+#    --docker-image ruby:2.2 \
+#    --docker-postgres latest

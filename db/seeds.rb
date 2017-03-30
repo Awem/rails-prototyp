@@ -1,0 +1,1 @@
+Rake::Task['db:populate'].invoke

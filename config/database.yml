@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: rproto
+  password: rproto
+
+development:
+  <<: *default
+  database: rproto_development
+
+test:
+  <<: *default
+  database: rproto_test
+
+production:
+  <<: *default
+  database: rproto_production

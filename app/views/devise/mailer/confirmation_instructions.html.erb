@@ -1,0 +1,5 @@
+<p>Willkommen bei rproto <%= @resource.name %>!</p>
+
+<p>Um Dein Konto nutzen zu können, bestätige bitte Deine Email (<%= @email %>). Klicke dazu auf folgenden Link:</p>
+
+<p><%= link_to 'Email bestätigen', confirmation_url(@resource, confirmationToken: @token) %></p>
